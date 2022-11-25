@@ -8,40 +8,40 @@ import { fetchMovies } from '../../services/fetchMovies';
 import Loader from 'components/Loader/Loader';
 
 const HomePage = () => {
-    const [movies, setMovies] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    const location = useLocation();
+  const location = useLocation();
 
-    useEffect(() => {
-        setIsLoading(true);
-        try {
-            fetchMovies().then(data => {
-                const mappedMovies = data.data.results.map(({ id, title }) => ({
-                    id,
-                    title,
-                }));
-                setMovies(mappedMovies);
-            });
-        } catch (error) {
-            setError(error);
-        } finally {
-            setIsLoading(false);
-        }
-    }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    try {
+      fetchMovies().then(data => {
+        const mappedMovies = data.data.results.map(({ id, title }) => ({
+          id,
+          title,
+        }));
+        setMovies(mappedMovies);
+      });
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
-    return (
-        <>
-            {isLoading && <Loader />}
-            {error && toast.error(`Whoops, something went wrong: ${error.message}`)}
-            <Container>
-                {error && toast.error(`Whoops, something went wrong: ${error.message}`)}
-                <MovieGallery movies={movies} prevLocation={location} />
-                <ToastContainer autoClose={3000} />
-            </Container>
-        </>
-    );
+  return (
+    <>
+      {isLoading && <Loader />}
+      {error && toast.error(`Whoops, something went wrong: ${error.message}`)}
+      <Container>
+        {error && toast.error(`Whoops, something went wrong: ${error.message}`)}
+        <MovieGallery movies={movies} prevLocation={location} />
+        <ToastContainer autoClose={3000} />
+      </Container>
+    </>
+  );
 };
 
 export default HomePage;

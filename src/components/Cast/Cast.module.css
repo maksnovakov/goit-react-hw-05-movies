@@ -1,14 +1,14 @@
-.castList{
+.castList {
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
 }
 
-.cast{
+.cast {
     width: 1024px;
 }
 
-.castList_item{
+.castList_item {
     width: 250px;
     margin-right: 4px;
     margin-bottom: 4px;
@@ -16,15 +16,15 @@
     font-size: 12px;
 }
 
-.castlist_itemText{
+.castList_itemText {
     padding: 5px;
 }
 
-.castList_item:last-child{
+.castList_item:last-child {
     margin-right: 0px;
 }
 
-.img{
+img {
     display: block;
     max-width: 100%;
     height: auto;
